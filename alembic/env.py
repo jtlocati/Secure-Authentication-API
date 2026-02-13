@@ -56,8 +56,9 @@ def run_migrations_offline() -> None:
     with context.begin_transaction():
         context.run_migrations()
 
-
+# Redefine def params.
 def run_migrations_online() -> None:
+
     """Run migrations in 'online' mode.
 
     In this scenario we need to create an Engine
