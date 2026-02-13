@@ -1,0 +1,17 @@
+services:
+  db:
+    image: postgres:16
+    #all env vars are recalled and entered as 'app'
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
+
+#After Creating file and defineing docker params you must run 'docker-compose up -d' to start containers in detached mode.
