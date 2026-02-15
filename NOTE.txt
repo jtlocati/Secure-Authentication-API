@@ -1,4 +1,15 @@
 to reopen env:
-    py -m venv .venv
-    .\.venv\Scripts\Activate.ps1
-    pip install -r requirements.txt
+    .\.venv\Scripts\Activate.ps1   
+
+YT to deepen understandings
+    Search:
+        “FastAPI dependency injection explained”
+        “JWT authentication explained”
+
+
+ORM	-> Python classes that represent database tables
+Session	-> Connection to the database
+Migration -> Versioning for your database schema
+JWT	Token that proves a user is authenticated
+RBAC -> Role-based authorization (user vs admin)
+Config/env -> Separates sensitive settings from code
