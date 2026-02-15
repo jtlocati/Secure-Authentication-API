@@ -1,3 +1,15 @@
+import os
+import sys
+from pathlib import Path
+from dotenv import load_dotenv
+
+#Check that project root is in sys.path
+ROOT = Path(__file__).resolve().parent.parents[1]
+sys.path.append(str(ROOT))
+
+#Make .env load no matter where alembic runs from
+load_dotenv(ROOT / ".env")
+
 from logging.config import fileConfig
 
 from sqlalchemy import engine_from_config
@@ -66,6 +78,7 @@ def run_migrations_online() -> None:
 
     """
     config.set_main_option("sqlalchemy.url", settings.DATABASE_URL)
+
     
     connectable = engine_from_config(
         config.get_section(config.config_ini_section, {}),
