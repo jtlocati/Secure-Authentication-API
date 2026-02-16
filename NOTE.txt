@@ -13,3 +13,15 @@ Migration -> Versioning for your database schema
 JWT	Token that proves a user is authenticated
 RBAC -> Role-based authorization (user vs admin)
 Config/env -> Separates sensitive settings from code
+
+| Your FastAPI Project | Django Equivalent                         | What It Means             |
+| -------------------- | ----------------------------------------- | ------------------------- |
+| `main.py`            | `urls.py` + `settings.py` entry           | Application bootstrapping |
+| `api/routes/auth.py` | `views.py`                                | HTTP endpoints            |
+| `schemas/*.py`       | Django Forms / DRF Serializers            | Input + output validation |
+| `models/user.py`     | `models.py`                               | Database table definition |
+| `services/users.py`  | Custom service layer (not default Django) | Business logic            |
+| `core/security.py`   | `django.contrib.auth`                     | Password + auth logic     |
+| `core/deps.py`       | Middleware + request.user                 | Per-request context       |
+| Alembic              | `makemigrations` / `migrate`              | Schema migration system   |
+| `.env + config.py`   | `settings.py`                             | Configuration management  |

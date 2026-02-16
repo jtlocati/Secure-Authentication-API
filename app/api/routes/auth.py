@@ -6,12 +6,17 @@ from app.schemas.user import UserOut
 from app.services.users import get_user_by_email, create_user, authenticate_user
 from app.core.security import create_access_token
 
+#Groups endpoints under "auth"
 router = APIRouter(prefix="/auth", tags=["auth"])
 
+#Checks if email alredy exsists, creates user if not, returns safe user info
 @router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
+
+#checks valid email/pass, issues JWT if correct
 def login(data: LoginIn, db: Session = Depends(get_db)):
     
     user = authenticate_user(db, data.email, data.password)
+
     if not user:
         raise HTTPException(status_code=401, detail="Invalad email or password")
     

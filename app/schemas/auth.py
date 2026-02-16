@@ -1,4 +1,5 @@
 from pydantic import BaseModel, EmailStr, Field
+#Define what API exspects to regester
 
 class RegisterIn(BaseModel):
     email: EmailStr
