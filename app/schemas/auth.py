@@ -1,13 +1,15 @@
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, ConfigDict
 #Define what API exspects to regester
 
 class RegisterIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     email: EmailStr
     password: str = Field(min_length=8, max_length=128)
 
 class LoginIn(BaseModel):
+    model_config = ConfigDict(extra="forbid")
     email: EmailStr
-    password: str
+    password: str = Field(min_length=8, max_length=128)
 
 class TokenOut(BaseModel):
     access_token: str

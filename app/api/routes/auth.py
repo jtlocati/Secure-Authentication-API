@@ -10,6 +10,8 @@ from app.core.deps import require_role
 #Groups endpoints under "auth"
 router = APIRouter(prefix="/auth", tags=["auth"])
 
+#Checks if email alredy exsists, creates user if not, returns safe user info
+#checks valid email/pass, issues JWT if correct
 @router.post("/register", response_model=UserOut, status_code=status.HTTP_201_CREATED)
 def register(data: RegisterIn, db: Session = Depends(get_db)):
     
@@ -21,8 +23,7 @@ def register(data: RegisterIn, db: Session = Depends(get_db)):
     user = create_user(db, data.email, data.password)
     return user
 
-#Checks if email alredy exsists, creates user if not, returns safe user info
-#checks valid email/pass, issues JWT if correct
+
 @router.post("/login", response_model=TokenOut)
 def login(data: LoginIn, db: Session = Depends(get_db)):
     #returns a object "user" dependent of where there is a matchin email

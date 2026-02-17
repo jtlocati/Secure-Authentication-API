@@ -45,3 +45,17 @@ def get_current_user(creds: HTTPAuthorizationCredentials = Depends(bearer_scheme
     
     #Return user object if exsists, else return 401
     return user
+
+
+from fastapi import Depends, HTTPException, status
+from app.models.user import User
+
+#Returns a function that FastAPI runs before it routes, if current_user.role != role needed, the route is canceled and a 403 is thrown
+def require_role(*allowed_roles: str):
+    def _checker(current_user: User = Depends(get_current_user)) -> User:
+        if current_user.role not in allowed_roles:
+            raise HTTPException(status_code=status.HTTP_403_FORBIDDEN, detail="You lack permissions")
+        return current_user
+    return _checker
+
+
