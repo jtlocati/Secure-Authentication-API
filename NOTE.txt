@@ -29,3 +29,5 @@ Config/env -> Separates sensitive settings from code
 
 adding a second DB to postgres container
 docker exec -it secure-authentication-api-db-1 psql -U app -d app -c "CREATE DATABASE app_test;"
+
+to initalize TEST_DATABASE_URL: $env:TEST_DATABASE_URL="postgresql+psycopg2://app:app@127.0.0.1:5433/app_test"

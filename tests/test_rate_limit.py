@@ -1,16 +1,14 @@
 import pytest
 from app.models.user import User
 
-def rate_limit_trips(client):
+RL_Trip = False
 
-    RL_trip = False
-
-    payload_dos = {"email": "NonReal@test.com", "password": "NonRealPassword"}
-
+def test_RL(client):
+    payload = {"email": "DOC@test.com", "password": "StrongPass123"}
     for _ in range(25):
-        r = client.post("/auth/login", json=payload_dos)
+        r = client.post("auth/login", json=payload)
         if r.status_code == 429:
-            RL_trip =True
+            RL_Trip = True
             break
 
-    assert RL_trip == True
+    assert RL_Trip == True
