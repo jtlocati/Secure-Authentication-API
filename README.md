@@ -20,7 +20,7 @@ FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, passlib/bcrypt, python-jose,
 ## What I Learned:
 Python constructs such as FastAPI relate heavaly to other packages that im already familiar with such as Django and Flask. The File structure of Fast API i saw to have relationships.
 
-| Your FastAPI Project | Django Equivalent                         | Function                  |
+| FastAPI              | Django Equivalent                         | Function                  |
 | -------------------- | ----------------------------------------- | ------------------------- |
 | `main.py`            | `urls.py` + `settings.py` entry           | Application bootstrapping |
 | `api/routes/auth.py` | `views.py`                                | HTTP endpoints            |
