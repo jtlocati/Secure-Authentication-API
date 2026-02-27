@@ -16,3 +16,18 @@ A production-style FastAPI REST API that implements secure user authentication a
 
 ## Tech Stack
 FastAPI, Pydantic, SQLAlchemy, Alembic, PostgreSQL, passlib/bcrypt, python-jose, pytest, Docker
+
+## What I Learned:
+Python constructs such as FastAPI relate heavaly to other packages that im already familiar with such as Django and Flask. The File structure of Fast API i saw to have relationships.
+
+| Your FastAPI Project | Django Equivalent                         | Function                  |
+| -------------------- | ----------------------------------------- | ------------------------- |
+| `main.py`            | `urls.py` + `settings.py` entry           | Application bootstrapping |
+| `api/routes/auth.py` | `views.py`                                | HTTP endpoints            |
+| `schemas/*.py`       | Django Forms / DRF Serializers            | Input + output validation |
+| `models/user.py`     | `models.py`                               | Database table definition |
+| `services/users.py`  | Custom service layer (not default Django) | Business logic            |
+| `core/security.py`   | `django.contrib.auth`                     | Password + auth logic     |
+| `core/deps.py`       | Middleware + request.user                 | Per-request context       |
+| Alembic              | `makemigrations` / `migrate`              | Schema migration system   |
+| `.env + config.py`   | `settings.py`                             | Configuration management  |
